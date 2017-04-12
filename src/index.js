@@ -16,8 +16,8 @@ var routes = (
     <Provider store={store}>
         <Router history={history}>
             <Route path="/" component={App} />
-            <Route path=":pageSlug" component={PageSingle} />
             <Route path="/pages" component={PageList} />
+            <Route path=":pageSlug" component={PageSingle} />
             <Route path="/page/add" component={PageAdd} />
             <Route path="*" component={NotFound} />
         </Router>
