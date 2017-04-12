@@ -5,6 +5,9 @@ import { Router, Route } from "react-router";
 
 import App from './App';
 import NotFound from './NotFound';
+import PageList from './page/pageList';
+import PageAdd from './page/pageAdd';
+import PageSingle from './page/pageSingle';
 import './index.css';
 
 import store, {history} from './store';
@@ -13,10 +16,9 @@ var routes = (
     <Provider store={store}>
         <Router history={history}>
             <Route path="/" component={App} />
-            <Route path="admin" component={NotFound} >
-                <Route path="pages" component={NotFound} />
-                <Route path="/page/:pageSlug" component={NotFound} />
-            </Route>
+            <Route path=":pageSlug" component={PageSingle} />
+            <Route path="/pages" component={PageList} />
+            <Route path="/page/add" component={PageAdd} />
             <Route path="*" component={NotFound} />
         </Router>
     </Provider>

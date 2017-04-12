@@ -12,9 +12,16 @@ import { combineReducers } from 'redux';
 
 import { routerReducer } from 'react-router-redux'; // we need this for react-router
 import pages from './pages';
+import { reducer as formReducer } from 'redux-form'
+
+const reducers = {
+    pages,
+    form: formReducer,
+    routing: routerReducer
+}
 
 // Combine all our reducers together
 // const rootReducer = combineReducers({ pagesDataFromASource, pagesDataFromASource, routing: routerReducer });
-const rootReducer = combineReducers({ pages, routing: routerReducer });
+const rootReducer = combineReducers(reducers);
 
 export default rootReducer;
