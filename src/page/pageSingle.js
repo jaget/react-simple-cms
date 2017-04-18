@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from "react-redux";
 import Nav from '../nav';
+import { Link } from 'react-router';
 
 class PageSingle extends React.Component {
     render() {
@@ -17,6 +18,7 @@ class PageSingle extends React.Component {
         return (
             <div>
                 <Nav/>
+                <Link to={"/page/edit/"+this.props.pages.indexOf(currentPage)} >Edit</Link>
                     <h1>{currentPage.title}</h1>
                 <div dangerouslySetInnerHTML={pageMarkup()} />
             </div>

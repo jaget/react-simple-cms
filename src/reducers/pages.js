@@ -12,6 +12,13 @@ export default function reducer(state = INITIAL_STATE, action){
                 action.payload
             ]
         }
+        case 'EDIT_PAGE': {
+            let newState = [
+                ...state
+            ];
+            newState[action.id] = action.payload;
+            return newState;
+        }
         default: {
             return state;
         }

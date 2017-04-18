@@ -1,21 +1,21 @@
 import React from 'react';
 import { connect } from "react-redux";
-import { addPage } from "../actions/addPage";
+import { editPage } from "../actions/editPage";
 import Nav from "../nav";
 import { Field, reduxForm } from 'redux-form';
 import AddPage from "./pageAddForm";
 
 const mapStateToProps = (state) => {//todo is this needed
     return {
-        pages: state.pages
+        pages: state.pages,
     }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return ({
-        editPage: (values) => {
+        editPage: (id, values) => {
             dispatch(
-                addPage({
+                editPage(id, {
                     linkText: values.linkText,
                     title: values.title,
                     slug: values.slug,
@@ -27,21 +27,23 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     });
 }
 
-class PageAdd extends React.Component {
+class PageEdit extends React.Component {
     submit = (values) => {
+        let id = this.props.routeParams.id;
         // Do something with the form values
-        this.props.editPage(values);
+        this.props.editPage(id, values);
     }
 
     render() {
+        let currentPage = this.props.pages[this.props.routeParams.id];
+
         return (
             <div>
                 <Nav/>
-                <AddPage onSubmit={this.submit} />
+                <AddPage onSubmit={this.submit} initialValues={currentPage} />
             </div>
         );
     }
 }
 
-
-export default connect(mapStateToProps, mapDispatchToProps)(PageAdd);
+export default connect(mapStateToProps, mapDispatchToProps)(PageEdit);
