@@ -8,6 +8,7 @@ import NotFound from './NotFound';
 import PageList from './page/pageList';
 import PageAdd from './page/pageAdd';
 import PageEdit from './page/pageEdit';
+import PageDelete from './page/pageDelete';
 import PageSingle from './page/pageSingle';
 import './index.css';
 
@@ -21,6 +22,7 @@ var routes = (
             <Route path=":pageSlug" component={PageSingle} />
             <Route path="/page/add" component={PageAdd} />
             <Route path="/page/edit/:id" component={PageEdit} />
+            <Route path="/page/delete/:id" component={PageDelete} />
             <Route path="*" component={NotFound} />
         </Router>
     </Provider>

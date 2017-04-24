@@ -19,6 +19,13 @@ export default function reducer(state = INITIAL_STATE, action){
             newState[action.id] = action.payload;
             return newState;
         }
+        case 'DELETE_PAGE': {
+            let newState = [
+                ...state
+            ];
+            delete newState[action.id];
+            return newState;
+        }
         default: {
             return state;
         }

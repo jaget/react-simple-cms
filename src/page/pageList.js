@@ -12,7 +12,7 @@ const mapStateToProps = (state) => {
 class PageList extends React.Component {
     render() {
         let mappedPages = this.props.pages.map((page, i) =>
-            <li key={i} ><Link to={"/page/edit/" + i} >Edit [{page.linkText}]</Link></li>
+            <li key={i} ><Link to={"/page/edit/" + i} >Edit [{page.linkText}]</Link><Link to={"/page/delete/" + i} >Delete [{page.linkText}]</Link></li>
         );
 
         return (
